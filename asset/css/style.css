@@ -51,7 +51,7 @@ i{
 .myMessage, .otherMessage{
     border-radius: 10px;
     display: flex;
-    max-width: 40%;
+    max-width: 45%;
     justify-content: space-between;
     align-items: end;
     margin-bottom: 0.5rem;
