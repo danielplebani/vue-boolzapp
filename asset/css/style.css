@@ -13,6 +13,7 @@
     height: calc(100vh - 2rem);
     background-color: white;
     padding: 0;
+    border: 1px solid rgba(128, 128, 128, 0.2);
 }
 
 header{
@@ -20,9 +21,18 @@ header{
     background-color: rgba(234,234,234,255);
 }
 
-.col-65{
+main{
+    height: calc(100% - 3.5rem);
+}
+
+.col-65-header{
     width: 65%;
-    border-left: 0.5px solid rgba(128, 128, 128, 0.608);
+    border-left: 0.5px solid rgba(128, 128, 128, 0.251);
+}
+
+.col-65-main{
+    width: 65%;
+    background-image: url(../img/mine.jpg);
 }
 
 .avatar{
@@ -30,4 +40,27 @@ header{
     border-radius: 50%;
     object-fit: cover;
     border: 0.2px solid rgba(128, 128, 128, 0.182);
+    cursor: pointer;
+}
+
+i{
+    cursor: pointer;
+    color: #9d9b9b;;
+}
+
+.myMessage, .otherMessage{
+    border-radius: 10px;
+    max-width: 60%;
+}
+
+.myMessage{
+    background-color: rgba(213,249,186,255);
+    position: absolute;
+    right: 4rem;
+}
+
+.otherMessage{
+    background-color: white;
+    position: absolute;
+    left: 4rem;
 }
