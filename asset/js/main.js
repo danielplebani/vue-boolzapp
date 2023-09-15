@@ -10,6 +10,22 @@ Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visua
 Milestone 2
 Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all’interno del pannello della conversazione
 Click sul contatto mostra la conversazione del contatto cliccato
+
+Milestone 3
+-Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando
+“enter” il testo viene aggiunto al thread sopra, come messaggio verde
+-Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà
+un “ok” come risposta, che apparirà dopo 1 secondo
+
+Milestone 4
+-Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i
+contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo
+“mar” rimangono solo Marco e Martina)
+
+Milestone 5 - opzionale
+-Cancella messaggio: cliccando sul messaggio appare un menu a tendina che
+permette di cancellare il messaggio selezionato
+-Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
 */
 
 const { createApp } = Vue
@@ -178,99 +194,14 @@ createApp({
                   status: 'received'
               }
           ],
-        },
-        {
-            name: 'Gianmarco L.',
-            avatar: '/asset/img/avatar_1.jpg',
-            visible: true,
-            messages: [
-                {
-                    date: '10/01/2020 15:30:55',
-                    message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                    status: 'received'
-                },
-                {
-                    date: '10/01/2020 15:50:00',
-                    message: 'No, l\'ho già mangiata ieri, ordiniamosushi!',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 15:51:00',
-                    message: 'OK!!',
-                    status: 'received'
-                }
-            ],
-          },
-          {
-            name: 'Simone Fasanelli',
-            avatar: '/asset/img/avatar_2.jpg',
-            visible: true,
-            messages: [
-                {
-                    date: '10/01/2020 15:30:55',
-                    message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                    status: 'received'
-                },
-                {
-                    date: '10/01/2020 15:50:00',
-                    message: 'No, l\'ho già mangiata ieri, ordiniamosushi!',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 15:51:00',
-                    message: 'OK!!',
-                    status: 'received'
-                }
-            ],
-          },
-          {
-            name: 'Davide Esposito',
-            avatar: '/asset/img/avatar_3.jpg',
-            visible: true,
-            messages: [
-                {
-                    date: '10/01/2020 15:30:55',
-                    message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                    status: 'received'
-                },
-                {
-                    date: '10/01/2020 15:50:00',
-                    message: 'No, l\'ho già mangiata ieri, ordiniamosushi!',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 15:51:00',
-                    message: 'OK!!',
-                    status: 'received'
-                }
-            ],
-          },
-          {
-            name: 'Carlo Rossi',
-            avatar: '/asset/img/avatar_4.jpg',
-            visible: true,
-            messages: [
-                {
-                    date: '10/01/2020 15:30:55',
-                    message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                    status: 'received'
-                },
-                {
-                    date: '10/01/2020 15:50:00',
-                    message: 'No, l\'ho già mangiata ieri, ordiniamosushi!',
-                    status: 'sent'
-                },
-                {
-                    date: '10/01/2020 15:51:00',
-                    message: 'OK!!',
-                    status: 'received'
-                }
-            ],
-          }
+        }
       ],
 
       activeChat: 0,
 
+      newMessage: '',
+
+      searchedName: ''
     }
   },
 
@@ -278,6 +209,21 @@ createApp({
 
     chosenChat(index){
         this.activeChat = index;
+    },
+
+    autoAnswer() {
+        setTimeout(() => {
+            this.contacts[this.activeChat].messages.push({date: 'now', message: 'ok!', status: 'received'});
+    }, 1000)
+    },
+
+    sendNewMessage(){
+        if (this.newMessage != '') {
+            this.contacts[this.activeChat].messages.push({date: 'now', message: this.newMessage, status: 'sent'})
+            this.newMessage = ''
+
+            this.autoAnswer()
+        } 
     }
   }
 }).mount('#app')

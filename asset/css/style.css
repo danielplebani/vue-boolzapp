@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container{
@@ -70,5 +71,5 @@ i{
 }
 
 .activeChat{
-    background-color: rgba(233,235,235,255);
+    background-color: rgba(128, 128, 128, 0.2);
 }
