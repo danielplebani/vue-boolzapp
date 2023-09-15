@@ -36,7 +36,7 @@ createApp({
       contacts: [
         {
           name: 'Michele',
-          avatar: '/asset/img/avatar_1.jpg',
+          avatar: './asset/img/avatar_1.jpg',
           visible: true,
           messages: [
               {
@@ -58,7 +58,7 @@ createApp({
         },
         {
           name: 'Fabio',
-          avatar: '/asset/img/avatar_2.jpg',
+          avatar: './asset/img/avatar_2.jpg',
           visible: true,
           messages: [
               {
@@ -80,7 +80,7 @@ createApp({
         },
         {
           name: 'Samuele',
-          avatar: '/asset/img/avatar_3.jpg',
+          avatar: './asset/img/avatar_3.jpg',
           visible: true,
           messages: [
               {
@@ -102,7 +102,7 @@ createApp({
         },
         {
           name: 'Alessandro B.',
-          avatar: '/asset/img/avatar_4.jpg',
+          avatar: './asset/img/avatar_4.jpg',
           visible: true,
           messages: [
               {
@@ -119,7 +119,7 @@ createApp({
         },
         {
           name: 'Alessandro L.',
-          avatar: '/asset/img/avatar_5.jpg',
+          avatar: './asset/img/avatar_5.jpg',
           visible: true,
           messages: [
               {
@@ -136,7 +136,7 @@ createApp({
         },
         {
           name: 'Claudia',
-          avatar: '/asset/img/avatar_6.jpg',
+          avatar: './asset/img/avatar_6.jpg',
           visible: true,
           messages: [
               {
@@ -158,7 +158,7 @@ createApp({
         },
         {
           name: 'Federico',
-          avatar: '/asset/img/avatar_7.jpg',
+          avatar: './asset/img/avatar_7.jpg',
           visible: true,
           messages: [
               {
@@ -175,7 +175,7 @@ createApp({
         },
         {
           name: 'Davide',
-          avatar: '/asset/img/avatar_8.jpg',
+          avatar: './asset/img/avatar_8.jpg',
           visible: true,
           messages: [
               {
@@ -207,7 +207,7 @@ createApp({
 
   methods:{  
 
-    chosenChat(index){
+    chosenChat(index) {
         this.activeChat = index;
     },
 
@@ -217,13 +217,23 @@ createApp({
     }, 1000)
     },
 
-    sendNewMessage(){
+    sendNewMessage() {
         if (this.newMessage != '') {
             this.contacts[this.activeChat].messages.push({date: 'now', message: this.newMessage, status: 'sent'})
             this.newMessage = ''
 
             this.autoAnswer()
         } 
+    },
+
+    nameSearch() {
+        this.contacts.forEach(contact => {
+        if (contact.name.toLowerCase().includes(this.searchedName.toLowerCase())) {
+            contact.visible = true;
+        } else {
+            contact.visible = false;
+        }
+        })
     }
   }
 }).mount('#app')
