@@ -236,8 +236,6 @@ createApp({
     },
 
     deleteMessage(index) {
-        console.log('ciao' + index);
-
         this.contacts.forEach(contact => {
             contact.messages[index] = ''
         })
