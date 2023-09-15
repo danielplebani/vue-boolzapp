@@ -236,9 +236,7 @@ createApp({
     },
 
     deleteMessage(index) {
-        this.contacts.forEach(contact => {
-            contact.messages[index] = ''
-        })
+        this.contacts[this.activeChat].messages[index].message = '';
     }
   }
 }).mount('#app')

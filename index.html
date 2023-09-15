@@ -77,7 +77,9 @@
                         <img :src="contact.avatar" class="avatar me-1">
                         <div class="d-flex flex-column">
                           <span>{{contact.name}}</span>
-                          <span style="font-size: 10px; color: gray; max-height: 15px; overflow: auto;">{{contact.messages[contact.messages.length - 1].message}}</span>
+                          <span style="font-size: 10px; color: gray; max-height: 15px; overflow: auto;">
+                            {{contact.messages[contact.messages.length - 1].message}}
+                          </span>
                         </div>
                       </div>
                       <span style="font-size: x-small; color: grey;" class="col text-center">{{contact.messages[contact.messages.length - 1].date}}</span>
@@ -93,7 +95,7 @@
               <div style="height: calc(100% - 3.5rem)" class="px-5 pt-5 overflow-auto">
 
                 <div v-for="(chat, index) in contacts[activeChat].messages">
-                  <div :class="contacts[activeChat].messages[index] == '' ? 'd-none' : 'd-flex flex-column' ">
+                  <div :class="contacts[activeChat].messages[index].message == '' ? 'd-none' : 'd-flex flex-column' ">
                     <div :class="chat.status == 'sent' ? 'myMessage' : 'otherMessage'">
                       <span style="width: 90%; align-self: center; margin: 0.6rem;">{{chat.message}}</span>
                       <span style="font-size: 8px; color: gray;" class="col me-1 mb-1 text-center d-flex flex-column justify-content-end">
