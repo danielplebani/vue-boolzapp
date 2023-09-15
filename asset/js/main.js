@@ -206,7 +206,6 @@ createApp({
   },
 
   methods:{  
-
     chosenChat(index) {
         this.activeChat = index;
     },
@@ -233,6 +232,14 @@ createApp({
         } else {
             contact.visible = false;
         }
+        })
+    },
+
+    deleteMessage(index) {
+        console.log('ciao' + index);
+
+        this.contacts.forEach(contact => {
+            contact.messages[index] = ''
         })
     }
   }
