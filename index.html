@@ -64,7 +64,7 @@
                   <span class="input-group-text" id="inputGroup-sizing-sm">
                     <i style="color: rgba(128, 128, 128, 0.458);" class="fa-solid fa-magnifying-glass"></i>
                   </span>
-                  <input style="font-size: small;" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Cerca o inizia una nuova chat" v-model="searchedName" @keydown="nameSearch()">
+                  <input style="font-size: small;" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Cerca o inizia una nuova chat" v-model="searchedName" @keyup="nameSearch()">
                 </div>
               </div>
               
@@ -78,7 +78,10 @@
                         <div class="d-flex flex-column">
                           <span>{{contact.name}}</span>
                           <span style="font-size: 10px; color: gray; max-height: 15px; overflow: auto;">
-                            {{contact.messages[contact.messages.length - 1].message}}
+                            
+                            <span v-if="contact.messages[contact.messages.length - 1].message != '' ">{{contact.messages[contact.messages.length - 1].message}}</span>
+                            <span v-else>{{contact.messages[(contact.messages.length - 1) - 1].message}}</span>
+
                           </span>
                         </div>
                       </div>
