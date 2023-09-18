@@ -111,10 +111,10 @@
                 <div v-for="(chat, index) in contacts[activeChat].messages">
                   <div v-if="contacts[activeChat].messages[index].message != '' " class="d-flex flex-column">
                     <div :class="chat.status == 'sent' ? 'myMessage' : 'otherMessage'">
-                      <span style="width: 90%; align-self: center; margin: 0.6rem;">{{chat.message}}</span>
+                      <div style="align-self: center; margin: 0.6rem;" class="col-9">{{chat.message}}</div>
                       <span style="font-size: 8px; color: gray;" class="col me-1 mb-1 text-center d-flex flex-column justify-content-end">
                     
-                    <div class="dropdown">
+                        <div class="dropdown">
                       <button style="color: gray;" class="btn dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       </button>
                       <ul class="dropdown-menu">
@@ -122,9 +122,9 @@
 
                         <li><a class="dropdown-item" href="#">info message</a></li>
                       </ul>
-                    </div>
+                        </div>
 
-                    <span>{{chat.date}}</span>
+                        <span>{{chat.date}}</span>
                       </span>
                     </div>
                   </div>
@@ -136,7 +136,7 @@
               <div style="height: 3.5rem; background-color: rgba(243,238,234,255);" class="d-flex justify-content-between align-items-center">
                 <i class="fa-regular fa-face-smile fs-5 mx-4"></i>
 
-                <input style="font-size: 12px; padding: 12px 6px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendNewMessage()">
+                <input style="font-size: 12px; padding: 12px 6px;" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Scrivi un messaggio..." v-model="newMessage" @keyup.enter="sendNewMessage()">
 
                 <i class="fa-solid fa-paper-plane fs-5 mx-4" @click='sendNewMessage()' v-if="newMessage != '' "></i>
                 <i class="fa-solid fa-microphone fs-5 mx-4" v-if="newMessage == '' "></i>
