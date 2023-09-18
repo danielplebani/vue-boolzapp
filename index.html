@@ -79,14 +79,17 @@
                           <span>{{contact.name}}</span>
                           <span style="font-size: 10px; color: gray; max-height: 15px; overflow: auto;">
                             
-                            <span v-if="contact.messages[contact.messages.length - 1].message != '' ">{{contact.messages[contact.messages.length - 1].message}}</span>
-                            
+                            <span v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length - 1].message}}</span>
 
+                            <span v-else>no messages</span>
 
                           </span>
                         </div>
                       </div>
-                      <span style="font-size: x-small; color: grey;" class="col text-center">{{contact.messages[contact.messages.length - 1].date}}</span>
+                      <span style="font-size: x-small; color: grey;" class="col text-center" v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length - 1].date}}</span>
+                      <span style="font-size: x-small; color: grey;" class="col text-center" v-else>...</span>
+
+
                     </div>
                   </div>
                 </div>
@@ -109,6 +112,7 @@
                       </button>
                       <ul class="dropdown-menu">
                         <li @click="deleteMessage(index)"><a class="dropdown-item" href="#">delete message</a></li>
+
                         <li><a class="dropdown-item" href="#">info message</a></li>
                       </ul>
                     </div>
