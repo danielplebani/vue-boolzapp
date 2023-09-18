@@ -236,8 +236,7 @@ createApp({
     },
 
     deleteMessage(index) {
-        this.contacts[this.activeChat].messages[index].message = '';
-        //this.contacts[this.activeChat].messages.splice(index);
+        this.contacts[this.activeChat].messages.splice(index);
     }
   }
 }).mount('#app')
