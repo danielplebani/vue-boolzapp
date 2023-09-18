@@ -201,7 +201,9 @@ createApp({
 
       newMessage: '',
 
-      searchedName: ''
+      searchedName: '',
+
+      notifications: true
     }
   },
 
@@ -237,6 +239,10 @@ createApp({
 
     deleteMessage(index) {
         this.contacts[this.activeChat].messages.splice(index, 1);
+    },
+
+    enableNotifications() {
+        this.notifications = false;
     }
   }
 }).mount('#app')

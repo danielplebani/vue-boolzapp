@@ -35,7 +35,7 @@
                 <img :src="contacts[activeChat].avatar" class="avatar me-1">
                 <div class="d-flex flex-column">
                   <span>{{contacts[activeChat].name}}</span>
-                  <span style="font-size: 10px; color: gray;">Ultimo accesso: oggi alle 12:00</span>
+                  <span style="font-size: 10px; color: gray;">Ultimo accesso: oggi alle 12:30</span>
                 </div>
               </div>
 
@@ -51,11 +51,18 @@
             <div class="col d-flex flex-column cursor-pointer">
 
               
-              <div style="background-color: rgba(142,218,252,255);" class="d-flex p-2 align-items-center">
+              <div style="background-color: rgba(142,218,252,255);" class="d-flex p-2 align-items-center" v-if="notifications">
                 <i style="color: rgba(142,218,252,255); border-radius: 50%; object-fit: cover; padding: 13px 11px" class="fa-solid fa-bell-slash bg-white"></i>
                 <div class="d-flex flex-column ms-2">
                   <span style="font-size: 13px;">Ricevi notifiche di nuovi messaggi</span>
-                  <span style="font-size: 10px; color: gray;"><u>Attiva notifiche desktop</u></span>
+                  <span style="font-size: 10px; color: gray;" @click="enableNotifications()"><u>Attiva notifiche desktop</u></span>
+                </div>
+              </div>
+
+              <div style="background-color: rgba(0, 128, 0, 0.35);" class="d-flex p-2 align-items-center" v-else>
+                <i style="color: rgba(0, 128, 0, 0.35); border-radius: 50%; object-fit: cover; padding: 13px 14px;" class="fa-solid fa-bell bg-white"></i>
+                <div class="d-flex flex-column ms-2">
+                  <span style="font-size: 13px;">Notifiche attivate</span>
                 </div>
               </div>
 
