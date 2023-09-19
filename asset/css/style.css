@@ -50,7 +50,7 @@ i{
 }
 
 .myMessage, .otherMessage{
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     max-width: 40%;
     margin-bottom: 0.5rem;

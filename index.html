@@ -111,7 +111,7 @@
                 <div v-for="(chat, index) in contacts[activeChat].messages">
                   <div v-if="contacts[activeChat].messages[index].message != '' " class="d-flex flex-column">
                     <div :class="chat.status == 'sent' ? 'myMessage' : 'otherMessage'">
-                      <div style="align-self: center; margin: 0.6rem;" class="col-9">{{chat.message}}</div>
+                      <div style="align-self: center; margin: 0.6rem; width: 90%;">{{chat.message}}</div>
                       <span style="font-size: 8px; color: gray;" class="col me-1 mb-1 text-center d-flex flex-column justify-content-end">
                     
                         <div class="dropdown">
